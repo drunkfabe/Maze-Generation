@@ -16,13 +16,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter maze rows (4-20): ");
         rows = scanner.hasNextInt() ? scanner.nextInt() : 20;
-        System.out.print("Enter maze cols (4-10): ");
+        System.out.print("Enter maze cols (4-20): ");
         cols = scanner.hasNextInt() ? scanner.nextInt() : 20;
 
         if (rows < 3 || cols < 3) {
             System.out.println("Invalid dimensions. Minimum size is 3x3.");
             return;
         }
+
         generateMaze();
         System.out.println("Generated Maze:");
         printMaze();
@@ -30,12 +31,6 @@ public class Main {
         int[] start = {0, 1};
         int[] end = {rows - 1, cols - 2};
 
-        visited = new boolean[rows][cols];
-        if (dfs(start[0], start[1], end)) {
-            markPath();
-            System.out.println("Path found:");
-        } else {
-            System.out.println("No path found.");
-        }
+
     }
 }
