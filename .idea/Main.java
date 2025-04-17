@@ -24,4 +24,13 @@ public class Main {
             return;
         }
 
+        generateMaze();
+        System.out.println("Generated Maze:");
+        printMaze();
+
+        int[] start = {0, 1};
+        int[] end = {rows - 1, cols - 2};
+
+
     }
+}
