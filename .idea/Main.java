@@ -71,5 +71,25 @@ public class Main {
         return r > 0 && r < rows - 1 && c > 0 && c < cols - 1;
     }
 
+    private static boolean dfs(int r, int c, int[] end) {
+        if (r < 0 || r >= rows || c < 0 || c >= cols)
+            return false;
+
+        if (visited[r][c] || maze[r][c] != PATH)
+            return false;
+
+        visited[r][c] = true;
+        path.add(new int[]{r, c});
+
+        if (r == end[0] && c == end[1])
+            return true;
+
+        if (dfs(r - 1, c, end) || dfs(r + 1, c, end) || dfs(r, c - 1, end) || dfs(r, c + 1, end))
+            return true;
+
+        path.remove(path.size() - 1); // backtrack
+        return false;
+    }
+
 
 }
