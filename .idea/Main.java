@@ -54,6 +54,19 @@ public class Main {
         maze[0][1] = PATH;
         maze[rows - 1][cols - 2] = PATH;
     }
+    private static void carve(int r, int c) {
+        int[][] directions = {{0, 2}, {2, 0}, {0, -2}, {-2, 0}};
+        Collections.shuffle(Arrays.asList(directions), new Random());
+
+        for (int[] dir : directions) {
+            int nr = r + dir[0], nc = c + dir[1];
+            if (isValidCell(nr, nc) && maze[nr][nc] == WALL) {
+                maze[nr][nc] = PATH;
+                maze[r + dir[0] / 2][c + dir[1] / 2] = PATH;
+                carve(nr, nc);
+            }
+        }
+    }
 
 
 }
