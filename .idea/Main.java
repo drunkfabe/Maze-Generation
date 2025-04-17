@@ -67,6 +67,9 @@ public class Main {
             }
         }
     }
+    private static boolean isValidCell(int r, int c) {
+        return r > 0 && r < rows - 1 && c > 0 && c < cols - 1;
+    }
 
 
 }
