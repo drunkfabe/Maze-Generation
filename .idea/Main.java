@@ -87,8 +87,28 @@ public class Main {
         if (dfs(r - 1, c, end) || dfs(r + 1, c, end) || dfs(r, c - 1, end) || dfs(r, c + 1, end))
             return true;
 
-        path.remove(path.size() - 1); // backtrack
+        path.remove(path.size() - 1);
         return false;
+    }
+
+
+    private static void markPath() {
+        for (int[] cell : path) {
+            int r = cell[0], c = cell[1];
+            if (maze[r][c] == PATH) {
+                maze[r][c] = VISITED;
+            }
+        }
+    }
+
+
+    private static void printMaze() {
+        for (char[] row : maze) {
+            for (char cell : row)
+                System.out.print(cell);
+            System.out.println();
+        }
+        System.out.println();
     }
 
 
